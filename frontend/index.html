@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExamPrep - Adaptive Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <div class="logo">ExamPrep</div>
+    <div class="nav-links">
+        <a href="#" onclick="showPage('dashboard')">Dashboard</a>
+        <a href="#" onclick="showPage('subjects')">Subjects</a>
+        <a href="#" onclick="showPage('progress')">Progress</a>
+        <button onclick="logout()">Logout</button>
+    </div>
+</nav>
+
+<section id="login" class="page active">
+    <div class="auth-box">
+        <h1>Student Login</h1>
+        <form id="loginForm" class="auth-form">
+            <input type="email" id="loginEmail" placeholder="Email" required>
+            <input type="password" id="loginPassword" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+
+        <div class="divider">or</div>
+
+        <form id="registerForm" class="auth-form">
+            <input type="text" id="registerName" placeholder="Full Name" required>
+            <input type="email" id="registerEmail" placeholder="Email" required>
+            <input type="password" id="registerPassword" placeholder="Password" required>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</section>
+
+<section id="dashboard" class="page">
+    <div class="welcome">
+        <h1>Welcome to ExamPrep 👋</h1>
+        <p>Prepare smarter with adaptive quizzes.</p>
+    </div>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Average Score</h3>
+            <p id="averageScore">--%</p>
+        </div>
+        <div class="card">
+            <h3>Quizzes Completed</h3>
+            <p id="quizCount">0</p>
+        </div>
+        <div class="card">
+            <h3>Weak Topic</h3>
+            <p id="weakTopic">None</p>
+        </div>
+    </div>
+
+    <div class="recommendation">
+        <h2>Recommended for You</h2>
+        <p id="recommendationText">
+            Take your first quiz to get personalized recommendations.
+        </p>
+        <button onclick="showPage('subjects')">Start Preparing</button>
+    </div>
+</section>
+
+<section id="subjects" class="page">
+    <h1>Select a Subject</h1>
+    <p class="section-subtitle">Choose a subject and start your adaptive quiz.</p>
+
+    <div id="subjectContainer" class="subject-container"></div>
+</section>
+
+<section id="topics" class="page">
+    <h1 id="topicHeading">Select a Topic</h1>
+    <p class="section-subtitle">Choose a topic to see its six progressive quizzes.</p>
+    <div id="topicContainer" class="subject-container"></div>
+</section>
+
+<section id="quizLevels" class="page">
+    <h1 id="levelHeading">Choose Quiz Level</h1>
+    <p class="section-subtitle">Complete the quizzes in order. Score at least 75% to unlock the next quiz.</p>
+    <div id="quizLevelContainer" class="subject-container"></div>
+</section>
+
+<section id="quiz" class="page">
+    <div class="quiz-box">
+        <h1 id="quizTitle">Quiz</h1>
+        <p id="questionNumber"></p>
+        <h2 id="question"></h2>
+        <div id="options"></div>
+        <div class="quiz-navigation">
+            <button id="previousQuestionButton" onclick="previousQuestion()" disabled>Previous</button>
+            <button id="nextQuestionButton" onclick="nextQuestion()">Next</button>
+        </div>
+    </div>
+</section>
+
+<section id="result" class="page">
+    <div class="result-box">
+        <h1>Quiz Completed 🎉</h1>
+        <h2>Your Score</h2>
+        <div class="score" id="finalScore">0%</div>
+        <h3 id="resultMessage"></h3>
+        <div id="weakArea"></div>
+        <div id="studyMaterial" class="material"></div>
+        <button onclick="retryQuiz()">Take Retry Quiz</button>
+        <button onclick="showPage('dashboard')">Go to Dashboard</button>
+    </div>
+</section>
+
+<section id="progress" class="page">
+    <h1>Your Progress</h1>
+    <div class="progress-box">
+        <h2>Quiz Performance</h2>
+        <p>Previous Score:</p>
+        <strong id="previousScore">--%</strong>
+        <p>Current Score:</p>
+        <strong id="currentScore">--%</strong>
+        <p>Improvement:</p>
+        <strong id="improvement">--%</strong>
+    </div>
+</section>
+
+<script src="hard-question-bank.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
